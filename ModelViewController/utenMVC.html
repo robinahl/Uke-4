@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+
+<body>
+    Hva heter du? <br/>
+    <input
+        id="nameInput"
+        type="text"
+    />
+    <br/>
+
+    Hvor gammel er du? <br/>
+    <input
+        id="ageInput"
+        type="range"
+        min="1"
+        max="120"
+        step="1"
+        value="20"
+    /><br/>
+    <button onclick="register()">Registrer</button>
+
+    <h3>Se her:</h3>
+    <hr/>
+    <div id="nameOutput"></div>
+    <hr/>
+    <div id="ageOutput"></div>
+    <hr/>
+
+    <script>
+        function register(){
+            var name = document.getElementById('nameInput').value;
+            document.getElementById('nameOutput').innerHTML = `
+                Hei, ${name}!
+                `;
+
+            var age = document.getElementById('ageInput').value;
+            document.getElementById('ageOutput').innerHTML = `
+                Du er ${age} år gammel.
+                `;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>madlib</title>
+    <link rel="stylesheet" type="text/css" href="TP3.css">
+</head>
+
+<body>
+    <div id="app"></div>
+    <div id="app1"></div>
+
+
+
+
+    <script>
+        updateView();
+        //model 
+        var person1 = '';
+        var adj1 = '';
+        var adj2 = '';
+        var adj3 = '';
+        var adj4 = '';
+        var adj5 = '';
+        var adj6 = '';
+        var noun1 = '';
+        var noun2 = '';
+        var verb1 = '';
+        var verb2 = '';
+        var verb3 = '';
+        var verb4 = '';
+        var ifDone = '';
+        var finishedStory = document.getElementById('storyText').textContent;
+
+
+        //view
+        updateView();
+        function updateView() {
+            // var person = personSomething == 0 ? '' : '';
+            // var adj = adjSomething == 0 ? '' : '';
+            // var noun = nounSomething == 0 ? '' : '';
+            // var verb = verbSomething == 0 ? '' : '' ;
+            document.getElementById('app').innerHTML = `
+            <h1>Madlib (TP3)</h1>
+            <p><div id="storyText">Yesterday, ${person1 ? person1 : '<b>Select Name</b>'} and I went to the park. On our way to the ${adj1 ? adj1 : '<b>Select adj</b>'} park,
+            we saw a ${adj2 ? adj2 : '<b>Select adj</b>'}  ${noun1 ? noun1 : '<b>Select noun</b>'} on a bike. <br/>
+            We also saw big ${adj3 ? adj3 : '<b>Select adj</b>'} balloons tied to a ${noun2 ? noun2 : '<b>Select noun</b>'}. Once we got to the
+            ${adj4 ? adj4 : '<b>Select adj</b>'} park, the sky turned ${adj5 ? adj5 : '<b>Select adj</b>'} .<br/>
+            It started to ${verb1 ? verb1 : '<b>Select verb</b>'} and ${verb2 ? verb2 : '<b>Select verb</b>'}. ${person1 ? person1 : '<b>Select Name</b>'} 
+            and I ${verb3 ? verb3 : '<b>Select verb</b>'} all the way home. Tomorrow we wil try to go to the ${adj6 ? adj6 : '<b>Select adj</b>'} 
+            park again and hope it doesn't ${verb4 ? verb4 : '<b>Select verb</b>'} .</div></p> <hr/> `
+            document.getElementById('app1').innerHTML = `
+            <div style="font-weight: bold;">Name:</div>
+            <button class="button" id="ord1" onclick="changeWordName(this)">Biden</button>
+            <button class="button" id="ord2" onclick="changeWordName(this)">Trump</button>
+            <hr>
+            <div><b>Adjective:</b></div>
+            <button class="button" id="ord3" onclick="changeWordAdj(this)">Busty</button>
+            <button class="button" id="ord4" onclick="changeWordAdj(this)">Cucky</button>
+            <button class="button" id="ord5" onclick="changeWordAdj(this)">Drunk</button>
+            <button class="button" id="ord6" onclick="changeWordAdj(this)">Fat</button>
+            <button class="button" id="ord7" onclick="changeWordAdj(this)">Cute</button>
+            <button class="button" id="ord8" onclick="changeWordAdj(this)">Fuzzy</button>
+            <button class="button" id="ord9" onclick="changeWordAdj(this)">Hairy</button>
+            <button class="button" id="ord10" onclick="changeWordAdj(this)">Funny</button>
+            <button class="button" id="ord11" onclick="changeWordAdj(this)">Sweaty</button>
+            <button class="button" id="ord12" onclick="changeWordAdj(this)">Sweet</button>
+            <button class="button" id="ord13" onclick="changeWordAdj(this)">Smashing</button>
+            <button class="button" id="ord14" onclick="changeWordAdj(this)">Brave</button><br/>
+            <hr>
+            <div><b>Noun:</b></div>
+            <button class="button" id="ord15" onclick="changeWordNoun(this)">Clown</button>
+            <button class="button" id="ord16" onclick="changeWordNoun(this)">Lawyer</button>
+            <button class="button" id="ord17" onclick="changeWordNoun(this)">Tree</button>
+            <button class="button" id="ord18" onclick="changeWordNoun(this)">Corpse</button>
+            <hr>
+            <div><b>Verb:</b></div>
+            <button class="button" id="ord19" onclick="changeWordVerb(this)">Rain</button>
+            <button class="button" id="ord20" onclick="changeWordVerb(this)">Crash</button>
+            <button class="button" id="ord21" onclick="changeWordVerb(this)">Whistle</button>
+            <button class="button" id="ord22" onclick="changeWordVerb(this)">F**k</button>
+            <button class="button" id="ord23" onclick="changeWordVerb(this)">Burn</button>
+            <button class="button" id="ord24" onclick="changeWordVerb(this)">Beat</button>
+            <button class="button" id="ord25" onclick="changeWordVerb(this)">Wreck</button>
+            <button class="button" id="ord26" onclick="changeWordVerb(this)">Play</button>
+            <div>${ifDone ? ifDone : ''}</div>
+            `;
+        }
+        var person;
+        //controller
+        function changeWordName(clicked) {
+            if (person1 === '') {
+                person1 = clicked.innerHTML;
+            } 
+            updateView();
+        }
+
+        function changeWordAdj(clicked) {
+            if (adj1 === '') {
+                adj1 = clicked.innerHTML;
+            } 
+            else if (adj2 === '') {
+                adj2 = clicked.innerHTML;
+            }
+            else if (adj3 === '') {
+                adj3 = clicked.innerHTML;
+            }
+            else if (adj4 === '') {
+                adj4 = clicked.innerHTML;
+            }
+            else if (adj5 === '') {
+                adj5 = clicked.innerHTML;
+            }
+            else if (adj6 === '') {
+                adj6 = clicked.innerHTML;
+            }
+            updateView();
+            checkIfDone();
+        }
+
+        function changeWordNoun (clicked) {
+            if (noun1 === '') {
+                noun1 = clicked.innerHTML;
+            } else if (noun2 === '') {
+                noun2 = clicked.innerHTML;
+            }
+            updateView();
+            checkIfDone();
+        }
+
+        function changeWordVerb (clicked) {
+            if (verb1 === '') {
+                verb1 = clicked.innerHTML;
+            }
+            else if (verb2 === '') {
+                verb2 = clicked.innerHTML;
+            }
+            else if (verb3 === '') {
+                verb3 = clicked.innerHTML;
+            }
+            else if (verb4 === '') {
+                verb4 = clicked.innerHTML;
+            }
+            updateView();
+            checkIfDone();
+        }
+
+        function checkIfDone () {
+            if  (person1 != '' && adj1 != '' && adj2 != '' && adj3 != '' && adj4 != '' && 
+                adj5  != '' && adj6  != '' && noun1 != '' && noun2 != '' && verb1 != '' && 
+                verb2  != '' && verb3  != '' && verb4 != '') {
+                ifDone = '<div><b>The story is completed, click <div onclick="redirectAndRead()">here</div> for a readout.</b></div>';
+                updateView();
+            }
+
+        }
+        // function redirectAndRead () {
+        //     finishedStory.replace(/\s/g, "%");
+        //     console.log(finishedStory);
+        //     <a href="url">link text</a>;
+        // }
+
+
+    </script>
+</body>
+
+</html>

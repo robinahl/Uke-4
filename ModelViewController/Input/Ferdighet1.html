@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+  </head>
+
+  <body>
+    <h1>Hvilket år er jeg født i?</h1>
+    <h2 id="alt1" onclick="doSomething1()">2001.</h2>
+    <h2 id="alt2" onclick="doSomething2()">1911.</h2>
+    <h2 id="alt3" onclick="doSomething3()">1991.</h2>
+    <h2 id="alt4" onclick="doSomething4()">2011.</h2>
+
+    <script>
+      function doSomething1() {
+        document.getElementById("alt1").innerHTML = "2001 er selvfølgelig feil.";
+      }
+      function doSomething2() {
+        document.getElementById("alt2").innerHTML =
+          "Dessverre, 1911 er feil.";
+      }
+      function doSomething3() {
+        document.getElementById("alt3").innerHTML = "1991 er korrekt!";
+      }
+      function doSomething4() {
+        document.getElementById("alt4").innerHTML = "2011? Nå tuller du fælt.";
+      }
+    </script>
+  </body>
+</html>

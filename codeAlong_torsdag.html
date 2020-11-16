@@ -1,0 +1,78 @@
+<!DOCTYPE <!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>GET-Drunk</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+
+        <style>
+
+            #app{
+                font-size: 100px;
+                user-select: none;
+            }
+
+            #pintEmoji{
+                font-size: 450px;
+            }
+        </style>
+    </head>
+    <body>
+
+<div id="app">
+
+</div>
+
+        <script>
+
+    // clickergame
+
+            const outputDiv = document.getElementById('app');
+        // model
+            let points = 0;
+            let pointsPerClick = 1;
+            let clickCounter = 0;
+            let emoji = "🍺";
+            let array = ["🍺", "🍻", "🍷", "🥂", "🥃", "🍸", "🍹", "🧖‍♀️", "🥛"];
+            let arrayL = array.length;
+            // let randomEmoji = Math.floor(Math.random()) * arrayL;
+
+
+        // view
+            updateView();
+            function updateView() {
+                outputDiv.innerHTML = `${points}
+                <div id="pintEmoji" onclick="clickEmoji()"> ${emoji} </div>
+                <button onclick="upgradePoints()">Kjøp Oppgradering! (10 pts,-)</button>
+                <div id="level">Points per click: ${pointsPerClick}</div>
+                `;
+            }
+
+
+        // controller
+            function clickEmoji() {
+                let randomEmoji = Math.floor(Math.random() * arrayL);
+                points += pointsPerClick;
+                clickCounter ++;
+                // emoji = points % 2 == 0 ? "🍺" : "🍻";
+                emoji = array[randomEmoji];
+                updateView();
+
+            }
+
+            function upgradePoints() {
+                if(points >= 10){
+                pointsPerClick ++;
+                points -= 10;
+                }
+                updateView();
+            }
+
+
+        </script>
+    </body>
+</html>

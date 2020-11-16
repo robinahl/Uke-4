@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Test Suite</title>
+    <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.11.3.css">
+</head>
+
+<body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+    <script src="code.js"></script>
+    <script src="https://code.jquery.com/qunit/qunit-2.11.3.js"></script>
+    <script>
+        QUnit.test('traffic light from phase - 1', function (assert) {
+            var expectedHtml = `<div class="trafficLight">
+                <div class="light red"></div>
+                <div class="light"></div>
+                <div class="light"></div>
+            </div>`
+            var actualHtml = createTrafficLightHtmlFromPhase(1);
+            assert.equal(actualHtml, expectedHtml);
+        });
+
+        QUnit.test('traffic light from phase - 2', function (assert) {
+            var expectedHtml = `<div class="trafficLight">
+                <div class="light red"></div>
+                <div class="light yellow"></div>
+                <div class="light"></div>
+            </div>`
+            var actualHtml = createTrafficLightHtmlFromPhase(2);
+            assert.equal(actualHtml, expectedHtml);
+        });
+
+
+        QUnit.test('traffic light from phase - 3', function (assert) {
+            var expectedHtml = `<div class="trafficLight">
+                <div class="light"></div>
+                <div class="light"></div>
+                <div class="light green"></div>
+            </div>`
+            var actualHtml = createTrafficLightHtmlFromPhase(3);
+            assert.equal(actualHtml, expectedHtml);
+        });
+
+        QUnit.test('traffic light from phase - 4', function (assert) {
+            var expectedHtml = `<div class="trafficLight">
+                <div class="light"></div>
+                <div class="light yellow"></div>
+                <div class="light"></div>
+            </div>`
+            var actualHtml = createTrafficLightHtmlFromPhase(4);
+            assert.equal(actualHtml, expectedHtml);
+        });
+
+        QUnit.test('traffic light from phase - undefined', function (assert) {
+            var expectedHtml = `<div class="trafficLight">
+                <div class="light"></div>
+                <div class="light"></div>
+                <div class="light"></div>
+            </div>`
+            var actualHtml = createTrafficLightHtmlFromPhase();
+            assert.equal(actualHtml, expectedHtml);
+        });
+
+        QUnit.test('traffic light - no lights', function (assert) {
+            var expectedHtml = `<div class="trafficLight">
+                <div class="light"></div>
+                <div class="light"></div>
+                <div class="light"></div>
+            </div>`
+            var actualHtml = createTrafficLightHtml(false, false, false);
+            assert.equal(actualHtml, expectedHtml);
+        });
+
+        QUnit.test('traffic light - only red', function (assert) {
+            var expectedHtml = `<div class="trafficLight">
+                <div class="light red"></div>
+                <div class="light"></div>
+                <div class="light"></div>
+            </div>`
+            var actualHtml = createTrafficLightHtml(true, false, false);
+            assert.equal(actualHtml, expectedHtml);
+        });
+
+        QUnit.test('traffic light - all on', function (assert) {
+            var expectedHtml = `<div class="trafficLight">
+                <div class="light red"></div>
+                <div class="light yellow"></div>
+                <div class="light green"></div>
+            </div>`
+            var actualHtml = createTrafficLightHtml(true, true, true);
+            assert.equal(actualHtml, expectedHtml);
+        });
+
+
+        QUnit.test('traffic light - no arguments', function (assert) {
+            var expectedHtml = `<div class="trafficLight">
+                <div class="light"></div>
+                <div class="light"></div>
+                <div class="light"></div>
+            </div>`
+            var actualHtml = createTrafficLightHtml();
+            assert.equal(actualHtml, expectedHtml);
+        });
+
+
+        // function add(a, b) {
+        //     return a + b;
+        // }
+
+        // QUnit.test('should add two numbers', function (assert) {
+        //     var number = add(1, 1);
+        //     assert.equal(number, 2);
+        // });
+
+
+        // QUnit.test('should add two higher numbers', function (assert) {
+        //     var number = add(7, 8);
+        //     assert.equal(number, 15);
+        // });
+    </script>
+</body>
+
+</html>

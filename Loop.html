@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>Løkker og tabeller</h3>
+    <ul>
+        <li>
+            Løkker
+            <ul>
+                <li><tt>while</tt></li>
+                <li><tt>for</tt></li>
+            </ul>
+        </li>
+        <li>Tabeller - "array"</li>
+    </ul>
+    <hr />
+    <script type="text/javascript">
+        // var names = ['Per', 'Pål', 'Espen', null, 'Sindre', 'A', 'B', 'C'];
+        var names = [];
+        names.push('Per');
+        names.push('Pål');
+        names.push('Espen');
+        var name = names.pop();
+        console.log(names);
+
+        // document.write(names.length);
+        // document.write(names[0]);
+
+        for (var i = 0; i < names.length; i++) {
+            if (names[i] != null) {
+            document.write('Hei, ' + names[i] + '!<br/>');
+            }
+        }
+
+        // var i = 3;
+        // while (i <= 9) {
+        //     document.write('Sindre ');
+        //     i++;
+        // }
+
+    </script>
+</body>
+
+</html>

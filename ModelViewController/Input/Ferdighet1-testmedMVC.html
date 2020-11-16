@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+  </head>
+  <body>
+        <div id="første"></div>
+
+    <script>
+
+    // model
+    var riktig;
+    var feil;
+
+    // view
+    updateView();
+    function updateView() {
+        var riktigSvarTekst = riktig ? 'Dette var riktig' : '';
+        var feilSvarTekst = feil ? 'Dette var feil' : '';
+        document.getElementById("første").innerHTML = `
+        <h1>Hvilket år er jeg født i?</h1>
+        <h2 onclick="feilSvar()">2001</h2>
+        <h2 onclick="feilSvar()">1911</h2>
+        <h2 onclick="riktigSvar()">1991</h2>
+        <h2 onclick="feilSvar()">2011</h2>
+        <button onclick="reset()">RESET</button>
+        ${riktigSvarTekst || feilSvarTekst || ''}
+        `;
+
+    }
+    // controller
+    function riktigSvar() {
+        riktig = true;
+        feil = false;
+        updateView();
+    }
+
+    function feilSvar() {
+        riktig = false;
+        feil = true;
+        updateView();
+    }
+
+    function reset() {
+        riktig = false;
+        feil = false;
+        updateView();
+    }
+
+
+// uten MVC
+    // function doSomething1() {
+    //     document.getElementById("alt1").innerHTML = "2001 er selvfølgelig feil.";
+    // }
+    // function doSomething2() {
+    //     document.getElementById("alt2").innerHTML = "Dessverre, 1911 er feil.";
+    // }
+    // function doSomething3() {
+    //     document.getElementById("alt3").innerHTML = "1991 er korrekt!";
+    // }
+    // function doSomething4() {
+    //     document.getElementById("alt4").innerHTML = "2011? Nå tuller du fælt.";
+    // }
+    </script>
+  </body>
+</html>
